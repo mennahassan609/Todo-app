@@ -31,11 +31,9 @@ Navigate to the `server` folder:
 
 cd server
 
-
 Install the required dependencies:
 
 npm install
-
 
 ### 3. Frontend Setup
 
@@ -45,7 +43,6 @@ cd client
 
 Install the required dependencies:
 
-
 ### 4. Run the Application
 
 #### Backend:
@@ -54,7 +51,6 @@ Start the backend server by running:
 
 npm start
 
-
 The backend will run on `http://localhost:3001`.
 
 #### Frontend:
@@ -62,3 +58,5 @@ The backend will run on `http://localhost:3001`.
 Start the frontend development server by running:
 
 npm run dev
+
+The frontend will run on `http://localhost:5173`.
