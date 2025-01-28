@@ -41,7 +41,7 @@ function UpdateUser() {
         })
         .then(result => {
             console.log(result);
-            navigate('/');
+            navigate('/users');
         })
         .catch(err => {
             console.log(err);

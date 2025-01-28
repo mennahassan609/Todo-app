@@ -28,6 +28,10 @@ function Users() {
         navigate(`/update/${user._id}`);
     };
 
+    const goToTodoList = () => {
+        navigate('/todo'); 
+    };
+
     if (!user) {
         return <div>Loading...</div>; 
     }
@@ -56,6 +60,7 @@ function Users() {
                         </tr>
                     </tbody>
                 </table>
+                <button className='btn btn-primary' onClick={goToTodoList}>Go to Todo List</button>
             </div>
         </div>
     );
