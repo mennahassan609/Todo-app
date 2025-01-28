@@ -19,11 +19,12 @@ function App() {
    <div>
     <BrowserRouter>
     <Routes>
-      <Route path="/signup" element={<SignUp />} ></Route>
-      <Route path="/login" element={<Login />} />
-      <Route path='/' element={<Users/>}></Route>
-      <Route path='/create' element={<CreateUser/>}></Route>
-      <Route path="/update/:id" element={<UpdateUser />} />
+    <Route path="/" element={<SignUp />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path='/users' element={<Users />} />
+          <Route path='/create' element={<CreateUser />} />
+          <Route path="/update/:id" element={<UpdateUser />} />
       <Route
           path="/todo"
           element={

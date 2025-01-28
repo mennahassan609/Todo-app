@@ -73,7 +73,7 @@ function TodoList() {
             
             <div className="button-group">
                 <Link to="/add-todo" className="btn btn-primary">Add New Todo</Link>
-                <Link to="/" className="btn btn-secondary">Personal Details</Link>
+                <Link to="/users" className="btn btn-secondary">Personal Details</Link>
             </div>
             
             <Link to="/logout" className="logout-button">
