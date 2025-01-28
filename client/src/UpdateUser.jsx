@@ -36,7 +36,6 @@ function UpdateUser() {
     const Update = (e) => {
         e.preventDefault();
 
-        // Check if passwords match
         if (password !== confirmPassword) {
             alert('Passwords do not match!');
             return;
