@@ -96,18 +96,32 @@ mongoose.connect("mongodb+srv://menna:1234@cluster0.5blym.mongodb.net/?retryWrit
             .catch(err => res.status(400).json({ error: err.message }));
     });
     
-    app.put('/updateUser/:id', authenticateToken, (req, res) => {
-        const id = req.params.id;
+
+app.put('/updateUser/:id', authenticateToken, async (req, res) => {
+    const id = req.params.id;
+
+    if (id !== req.userId) {
+        return res.status(403).json({ message: 'You can only update your own details' });
+    }
+
+    const { name, email, phone, password } = req.body;
+
+    let updatedData = { name, email, phone };
     
-        if (id !== req.userId) {
-            return res.status(403).json({ message: 'You can only update your own details' });
+    if (password) {
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            updatedData.password = hashedPassword;
+        } catch (err) {
+            return res.status(500).json({ error: 'Error hashing password' });
         }
-    
-        const { name, email, phone } = req.body;
-        UserModel.findByIdAndUpdate(id, { name, email,phone }, { new: true })
-            .then(user => res.json(user))
-            .catch(err => res.status(400).json({ error: err.message }));
-    });
+    }
+
+    UserModel.findByIdAndUpdate(id, updatedData, { new: true })
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json({ error: err.message }));
+});
+
     
     app.delete('/deleteUser/:id', authenticateToken, (req, res) => {
         const id = req.params.id;
