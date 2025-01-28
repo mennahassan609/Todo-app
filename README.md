@@ -25,6 +25,8 @@ Clone this repository to your local machine:
 ```bash
 git clone https://github.com/mennahassan609/Todo-app.git
 
+cd Todo-app
+
 ### 2. Backend Setup
 
 Navigate to the `server` folder:
