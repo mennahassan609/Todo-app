@@ -59,7 +59,7 @@ mongoose.connect("mongodb+srv://menna:1234@cluster0.5blym.mongodb.net/?retryWrit
     });
 
     app.post('/signup', async (req, res) => {
-        const { name, email, password } = req.body;
+        const { name, email, password,phone} = req.body;
     
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -68,6 +68,7 @@ mongoose.connect("mongodb+srv://menna:1234@cluster0.5blym.mongodb.net/?retryWrit
                 name,
                 email,
                 password: hashedPassword,
+                phone
             });
     
             await newUser.save();
@@ -78,8 +79,7 @@ mongoose.connect("mongodb+srv://menna:1234@cluster0.5blym.mongodb.net/?retryWrit
         }
     });
     app.get('/getUser/me', authenticateToken, (req, res) => {
-        const userId = req.userId;
-        UserModel.findById(userId)
+        UserModel.findById(req.userId)
             .then(user => res.json(user))
             .catch(err => res.status(400).json({ error: 'User not found' }));
     });
@@ -103,8 +103,8 @@ mongoose.connect("mongodb+srv://menna:1234@cluster0.5blym.mongodb.net/?retryWrit
             return res.status(403).json({ message: 'You can only update your own details' });
         }
     
-        const { name, email, age } = req.body;
-        UserModel.findByIdAndUpdate(id, { name, email, age }, { new: true })
+        const { name, email, phone } = req.body;
+        UserModel.findByIdAndUpdate(id, { name, email,phone }, { new: true })
             .then(user => res.json(user))
             .catch(err => res.status(400).json({ error: err.message }));
     });

@@ -45,7 +45,7 @@ function Users() {
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Age</th>
+                            <th>Phone</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -53,7 +53,7 @@ function Users() {
                         <tr>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td>{user.age}</td>
+                            <td>{user.phone}</td>
                             <td>
                                 <button className='btn btn-success' onClick={handleEdit}>Update</button>
                             </td>

@@ -6,7 +6,7 @@ function UpdateUser() {
     const { id } = useParams();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [age, setAge] = useState('');
+    const [phone, setPhone] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function UpdateUser() {
         .then(result => {
             setName(result.data.name);
             setEmail(result.data.email);
-            setAge(result.data.age);
+            setPhone(result.data.phone);
         })
         .catch(err => {
             console.log(err);
@@ -34,7 +34,7 @@ function UpdateUser() {
     const Update = (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
-        axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, age }, {
+        axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, phone}, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -64,10 +64,11 @@ function UpdateUser() {
                             value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="mb-2">
-                        <label htmlFor="age">Age</label>
-                        <input type="text" id="age" placeholder="Enter Age" className="form-control" 
-                            value={age} onChange={(e) => setAge(e.target.value)} />
+                        <label htmlFor="phone">Phone</label>
+                        <input type="text" id="phone" placeholder="Enter Phone" className="form-control" 
+                            value={phone} onChange={(e) => setPhone(e.target.value)} />
                     </div>
+                    
                     <button type="submit" className="btn btn-success">Submit</button>
                 </form>
             </div>
